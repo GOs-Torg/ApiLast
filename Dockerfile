@@ -1,24 +1,21 @@
 # Этап 1: Стадия сборки
 FROM ubuntu:latest AS build
 
-# Установка зависимостей, Java и Maven
-RUN apt-get update && \
-    apt-get install -y openjdk-17-jdk maven && \
-    apt-get clean;
 
 # Установка MySQL
 RUN apt-get update && \
-    apt-get install -y mysql-server && \
-    apt-get clean;
+    apt-get install -y mysql-server &&
 
 # Установка пароля для root пользователя
-RUN echo "mysql-server mysql-server/root_password password 123" | debconf-set-selections && \
-    echo "mysql-server mysql-server/root_password_again password 123" | debconf-set-selections
+RUN echo "mysql-server mysql-server/root_password password 123"  \
+    echo "mysql-server mysql-server/root_password_again password 123"
 
 # Запуск MySQL сервера и открытие порта 3306
-RUN service mysql start && \
-    mysql -uroot -p123 -e "GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY '123'; FLUSH PRIVILEGES;" && \
-    service mysql restart
+RUN service mysql start
+
+RUN apt-get update && \
+    apt-get install -y openjdk-17-jdk maven && \
+    apt-get clean;
 
 # Установка рабочей директории
 WORKDIR /app
