@@ -4,7 +4,7 @@ FROM ubuntu:latest AS build
 
 # Установка MySQL
 RUN apt-get update && \
-    apt-get install -y mysql-server &&
+    apt-get install -y mysql-server
 
 # Установка пароля для root пользователя
 RUN echo "mysql-server mysql-server/root_password password 123"  \
