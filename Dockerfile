@@ -18,7 +18,6 @@ RUN echo "mysql-server mysql-server/root_password password 123" | debconf-set-se
 # Запуск MySQL сервера и открытие порта 3306
 RUN service mysql start && \
     mysql -uroot -p123 -e "GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY '123'; FLUSH PRIVILEGES;" && \
-    sed -i 's/127.0.0.1/0.0.0.0/g' /etc/mysql/mysql.conf.d/mysqld.cnf && \
     service mysql restart
 
 # Установка рабочей директории
