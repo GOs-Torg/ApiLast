@@ -6,6 +6,21 @@ RUN apt-get update && \
     apt-get install -y openjdk-17-jdk maven && \
     apt-get clean;
 
+# Установка MySQL
+RUN apt-get update && \
+    apt-get install -y mysql-server && \
+    apt-get clean;
+
+# Установка пароля для root пользователя
+RUN echo "mysql-server mysql-server/root_password password 123" | debconf-set-selections && \
+    echo "mysql-server mysql-server/root_password_again password 123" | debconf-set-selections
+
+# Запуск MySQL сервера и открытие порта 3306
+RUN service mysql start && \
+    mysql -uroot -p123 -e "GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY '123'; FLUSH PRIVILEGES;" && \
+    sed -i 's/127.0.0.1/0.0.0.0/g' /etc/mysql/mysql.conf.d/mysqld.cnf && \
+    service mysql restart
+
 # Установка рабочей директории
 WORKDIR /app
 
@@ -27,20 +42,7 @@ WORKDIR /app
 # Копирование собранного JAR-файла из стадии сборки
 COPY --from=build /app/target/*.jar app.jar
 
-# Установка MySQL
-RUN apt-get update && \
-    apt-get install -y mysql-server && \
-    apt-get clean;
 
-# Установка пароля для root пользователя
-RUN echo "mysql-server mysql-server/root_password password 123" | debconf-set-selections && \
-    echo "mysql-server mysql-server/root_password_again password 123" | debconf-set-selections
-
-# Запуск MySQL сервера и открытие порта 3306
-RUN service mysql start && \
-    mysql -uroot -p123 -e "GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY '123'; FLUSH PRIVILEGES;" && \
-    sed -i 's/127.0.0.1/0.0.0.0/g' /etc/mysql/mysql.conf.d/mysqld.cnf && \
-    service mysql restart
 
 # Команда для запуска приложения
 ENTRYPOINT ["java", "-jar", "app.jar"]
