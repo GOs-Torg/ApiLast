@@ -1926,3 +1926,11 @@ The last packet sent successfully to the server was 0 milliseconds ago. The driv
 2024-05-13 20:25:41 INFO  c.e.pixelapi.PixelApiApplication - No active profile set, falling back to 1 default profile: "default"
 2024-05-13 20:25:44 INFO  c.e.pixelapi.PixelApiApplication - Started PixelApiApplication in 3.555 seconds (process running for 4.422)
 2024-05-13 20:25:44 INFO  c.e.pixelapi.shedules.BackupSchedule - Created File
+2024-05-13 20:40:36 ERROR c.e.p.controllers.DBController - No suitable driver found for jjdbc:mysql://${MYSQL_HOST:localhost}:3306/
+2024-05-13 20:40:36 INFO  c.e.pixelapi.PixelApiApplication - Starting PixelApiApplication using Java 19.0.2 with PID 46608 (C:\Users\pavel\OneDrive\Рабочий стол\DIplob\PixelAPI\target\classes started by pavel in C:\Users\pavel\OneDrive\Рабочий стол\DIplob\PixelAPI)
+2024-05-13 20:40:36 DEBUG c.e.pixelapi.PixelApiApplication - Running with Spring Boot v3.1.5, Spring v6.0.13
+2024-05-13 20:40:36 INFO  c.e.pixelapi.PixelApiApplication - No active profile set, falling back to 1 default profile: "default"
+2024-05-13 20:40:40 ERROR c.e.p.controllers.DBController - No suitable driver found for jjdbc:mysql://${MYSQL_HOST:localhost}:3306/
+2024-05-13 20:40:40 INFO  c.e.pixelapi.PixelApiApplication - Starting PixelApiApplication using Java 19.0.2 with PID 46608 (C:\Users\pavel\OneDrive\Рабочий стол\DIplob\PixelAPI\target\classes started by pavel in C:\Users\pavel\OneDrive\Рабочий стол\DIplob\PixelAPI)
+2024-05-13 20:40:40 DEBUG c.e.pixelapi.PixelApiApplication - Running with Spring Boot v3.1.5, Spring v6.0.13
+2024-05-13 20:40:40 INFO  c.e.pixelapi.PixelApiApplication - No active profile set, falling back to 1 default profile: "default"

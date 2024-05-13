@@ -12,7 +12,7 @@ public class DBController {
 //    private static final String password = "wyEIYbLZRMGdwTiyIVNzyfBgyAJxafly";
     private static final String url = "jdbc:mysql://${MYSQL_HOST:localhost}:3306/PixelSchool";
     protected static final String user = "root";
-    private static final String password = "";
+    private static final String password = "123";
     protected static Statement state;
     public Connection connection;
     private Logger logger = LoggerFactory.getLogger(this.getClass().getName());
